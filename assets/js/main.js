@@ -5,13 +5,12 @@ var listArray = [];
 
 function listItemObj(content, status) {
     this.content = '';
-    this.status = 'incomplete';
+    this.status = 'incomplet';
 }
 var changeToComp = function(){
     var parent = this.parentElement;
-    console.log('Changed to complete');
     parent.className = 'uncompleted well';
-    this.innerText = 'Incomplete';
+    this.innerText = 'incomplet';
     this.removeEventListener('click',changeToComp);
     this.addEventListener('click',changeToInComp);
     changeListArray(parent.firstChild.innerText,'complete');
@@ -20,13 +19,13 @@ var changeToComp = function(){
 
 var changeToInComp = function(){
     var parent = this.parentElement;
-    console.log('Changed to incomplete');
+    console.log('Changed to incomplet');
     parent.className = 'completed well';
     this.innerText = 'Complete';
     this.removeEventListener('click',changeToInComp);
     this.addEventListener('click',changeToComp);
 
-    changeListArray(parent.firstChild.innerText,'incomplete');
+    changeListArray(parent.firstChild.innerText,'incomplet');
 
 }
 
@@ -69,12 +68,12 @@ var createItemDom = function(text,status){
 
     var itemIncompBtn = document.createElement('button');
 
-    listItem.className = (status == 'incomplete')?'completed well':'uncompleted well';
+    listItem.className = (status == 'incomplet')?'completed well':'uncompleted well';
 
     itemLabel.innerText = text;
     itemCompBtn.className = 'btn btn-success';
-    itemCompBtn.innerText = (status == 'incomplete')?'Complete':'Incomplete';
-    if(status == 'incomplete'){
+    itemCompBtn.innerText = (status == 'incomplet')?'Complete':'incomplet';
+    if(status == 'incomplet'){
         itemCompBtn.addEventListener('click',changeToComp);
     }else{
         itemCompBtn.addEventListener('click',changeToInComp);
@@ -82,7 +81,7 @@ var createItemDom = function(text,status){
 
 
     itemIncompBtn.className = 'btn btn-danger';
-    itemIncompBtn.innerText = 'Delete';
+    itemIncompBtn.innerText = 'Supprimer';
     itemIncompBtn.addEventListener('click',removeItem);
 
     listItem.appendChild(itemLabel);
@@ -105,7 +104,7 @@ var addToList = function(){
     //add to the local storage
     refreshLocal();
     //change the dom
-    var item = createItemDom(addInput.value,'incomplete');
+    var item = createItemDom(addInput.value,'incomplet');
     todoList.appendChild(item);
     addInput.value = '';
 }
