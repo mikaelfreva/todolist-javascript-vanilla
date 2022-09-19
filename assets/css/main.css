@@ -8,10 +8,10 @@
 ul#todoList{
     margin-top: 30px;
 }
-.incomplet.well{
+.uncompleted.well{
     background-color: rgb(189, 238, 174);
 }
-.incomplet label{
+.uncompleted label{
     color: #afa7a7;
     text-decoration: line-through;
 }
